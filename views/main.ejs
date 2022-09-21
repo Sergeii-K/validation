@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <title>Document</title>
+
+
+<style type="text/css">
+   form { 
+     display: inline-grid;
+    }
+    input {
+        width: 200px;
+        margin: 5px;
+    }
+  </style>
+</head>
+<body>
+    <form name="testForm" method="post" enctype="multipart/form-data" >
+        <input type="text" name="name" placeholder="Имя" >
+        <input type="text" name="login" placeholder="Логин">
+        <input type="text" name="email" placeholder="Почта">
+        <input type="text" name="birthday" placeholder="Дата рождения   DD-MM-YYYY ">
+        
+        <button type="submit">Registration</button> 
+    </form>
+
+ <script>
+    const formEl = document.forms.testForm;
+
+    formEl.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const formData = new FormData(ev.target);
+
+        const { data } = await axios.post('/test', formData);
+
+    });
+
+    
+        // setTimeout( async () => {
+        //     await axios.post('/test', { bio1: { nameOne:'Vasia', workOne: 'work_1' }, bio2: { nameTwo: 'Petia', workTwo: 'work_2' }});
+        //         }, 10);
+
+    
+ </script>
+</body>
+</html>
